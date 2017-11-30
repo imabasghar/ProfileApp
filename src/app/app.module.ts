@@ -1,5 +1,3 @@
-import { AppMenu } from './shared/menu/menu';
-import { AppHeader } from './shared/header/header';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -8,13 +6,18 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ProfilePage } from '../pages/profile/profile';
+import { AppMenu } from './shared/menu/menu';
+import { AppHeader } from './shared/header/header';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     AppHeader,
-    AppMenu
+    AppMenu,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { HomePage } from '../pages/home/home';
   entryComponents: [
     MyApp,
     HomePage,
-    AppMenu
+    AppMenu,
+    ProfilePage
   ],
   providers: [
     StatusBar,

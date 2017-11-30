@@ -8,12 +8,18 @@ import { Component } from '@angular/core';
 export class AppHeader {
 
   @Output() moreButtonClick = new EventEmitter();
+  @Output() titleClick = new EventEmitter();
+
   constructor() {
 
   }
 
   onMoreButtonClick($event) {
     this.moreButtonClick.emit($event);
+  }
+
+  onTitleClick() {
+    this.titleClick.emit('home');
   }
 
 }

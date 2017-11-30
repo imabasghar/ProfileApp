@@ -1,0 +1,83 @@
+<ion-content padding>
+  <ion-card>
+    <ion-card-header class="bold">
+      Profile
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid *ngIf="!inEditMode">
+        <ion-row>
+          <ion-col class="bold" col-12 col-lg-2>
+            Name
+          </ion-col>
+          <ion-col col-12 col-lg-2>
+            {{currentProfile.name}}
+          </ion-col>
+          <ion-col class="bold" col-12 col-lg-2 offset-lg-1>
+            Email Address
+          </ion-col>
+          <ion-col col-12 col-lg-2>
+            {{currentProfile.email}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="bold" col-12 col-lg-2>
+            Date of Birth
+          </ion-col>
+          <ion-col col-12 col-lg-2>
+            {{currentProfile.dob | date: 'MMM dd, yyyy'}}
+          </ion-col>
+          <ion-col class="bold" col-12 col-lg-2 offset-lg-1>
+            Location
+          </ion-col>
+          <ion-col col-12 col-lg-2>
+            {{currentProfile.location}}
+          </ion-col>
+
+
+        </ion-row>
+      </ion-grid>
+
+      <ion-list *ngIf="inEditMode">
+        <ion-item>
+          <ion-label [color]="showErrorMessages && !newProfile.name ? 'danger': ''" floating>*Name</ion-label>
+          <ion-input [class.invalid]="showErrorMessages && !newProfile.name" [(ngModel)]="newProfile.name"></ion-input>
+          <button ion-button item-right color="danger" *ngIf="showErrorMessages && !newProfile.name">
+            Name is required
+          </button>
+        </ion-item>
+        <ion-item>
+          <ion-label [color]="showErrorMessages && !newProfile.email ? 'danger': ''" floating>*Email Address</ion-label>
+          <ion-input [class.invalid]="showErrorMessages && !newProfile.email" [(ngModel)]="newProfile.email"></ion-input>
+          <button ion-button item-right color="danger" *ngIf="showErrorMessages && !newProfile.email">
+            Email is required
+          </button>
+        </ion-item>
+        <ion-item>
+          <ion-label [color]="showErrorMessages && !newProfile.dob ? 'danger': ''" floating>*Date of Birth</ion-label>
+          <ion-datetime [class.invalid]="showErrorMessages && !newProfile.dob" [(ngModel)]="newProfile.dob"></ion-datetime>
+          <button ion-button item-right color="danger" *ngIf="showErrorMessages && !newProfile.dob">
+            Date of Birth is required
+          </button>
+        </ion-item>
+        <ion-item>
+          <ion-label [color]="showErrorMessages && !newProfile.location ? 'danger': ''" floating>*Location</ion-label>
+          <ion-input [class.invalid]="showErrorMessages && !newProfile.location" [(ngModel)]="newProfile.location"></ion-input>
+          <button item-right ion-button>Select Location</button>
+          <button ion-button item-right color="danger" *ngIf="showErrorMessages && !newProfile.location">
+            Location is required
+          </button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar *ngIf="inEditMode">
+    <button ion-button (click)="saveProfile()">Save</button>
+    <button ion-button (click)="cancelEdit()" color="danger">Cancel</button>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="!inEditMode">
+    <button ion-button (click)="inEditMode = true">Edit Profile</button>
+  </ion-toolbar>
+</ion-footer>

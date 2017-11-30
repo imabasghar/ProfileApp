@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'app-menu',
@@ -6,7 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppMenu {
 
-  constructor() {
+  constructor(public viewCtrl: ViewController) {
 
+  }
+
+  openProfilePage() {
+    this.viewCtrl.dismiss('openProfile');
   }
 }
