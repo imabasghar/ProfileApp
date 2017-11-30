@@ -17,5 +17,12 @@
 
 .ion-page > ion-content
 {
-   top: 52px;//your headers height
+   top: 56px; // your headers height
+}
+
+.platform-mobile.platform-ios {
+  .ion-page > ion-content
+  {
+     top: 44px; // your headers height
+  }
 }
