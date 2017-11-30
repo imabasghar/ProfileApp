@@ -43,7 +43,6 @@ export class ProfilePage {
     if(Object.keys(this.newProfile).length < 4)
       return false;
     for (var key in this.newProfile) {
-      console.log('key', key);
       if (this.newProfile.hasOwnProperty(key) && !this.newProfile[key]) {
         return false;
       }
@@ -66,7 +65,6 @@ export class ProfilePage {
     let modal = this.modalCtrl.create(LocationPickerPage);
     modal.present();
     modal.onDidDismiss(data => {
-      console.log(data);
       this.newProfile.location = data;
     })
   }

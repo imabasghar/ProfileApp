@@ -26,7 +26,6 @@ export class LocationPickerPage {
     public viewCtrl: ViewController
   ) {}
   ionViewDidLoad() {
-    console.log("IonViewDidLoad");
     //create search FormControl
     this.searchControl = new FormControl();
 
@@ -80,11 +79,9 @@ export class LocationPickerPage {
   }
 
   setLabelForMarker(latitude, longitude) {
-    console.log("set label for marker");
     this.geocoder.geocode(
       { location: { lat: latitude, lng: longitude } },
       (results, status) => {
-        console.log(results, status);
         if (status === "OK") {
           if (results[0]) {
             this.infoWindowLabel = results[0].formatted_address;
