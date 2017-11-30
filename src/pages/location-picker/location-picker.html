@@ -1,0 +1,17 @@
+<ion-header>
+  <input name="searchControl" placeholder="Search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+    class="form-control" #search />
+</ion-header>
+
+<ion-content class="modal">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapClick)="onMapClick($event)">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+      <agm-info-window [isOpen]="infoWindowLabel">
+        <button ion-button item-left (click)="selectLocation()">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+        {{infoWindowLabel}}
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</ion-content>

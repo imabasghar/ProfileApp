@@ -7,8 +7,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ProfilePage } from '../pages/profile/profile';
+import { LocationPickerPage } from '../pages/location-picker/location-picker';
+
 import { AppMenu } from './shared/menu/menu';
 import { AppHeader } from './shared/header/header';
+import { GOOGLE_MAPS_API_KEY } from './shared/constants';
+
+import { AgmCoreModule } from '@agm/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,18 +23,25 @@ import { AppHeader } from './shared/header/header';
     HomePage,
     AppHeader,
     AppMenu,
-    ProfilePage
+    ProfilePage,
+    LocationPickerPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    ReactiveFormsModule,
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: GOOGLE_MAPS_API_KEY,
+      libraries: ['places']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     AppMenu,
-    ProfilePage
+    ProfilePage,
+    LocationPickerPage
   ],
   providers: [
     StatusBar,

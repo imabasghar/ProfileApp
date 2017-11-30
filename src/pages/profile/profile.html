@@ -29,7 +29,7 @@
           <ion-col class="bold" col-5 col-lg-1 offset-lg-1>
             Location:
           </ion-col>
-          <ion-col col-7 col-lg-2>
+          <ion-col col-7 col-lg-4>
             {{currentProfile.location}}
           </ion-col>
 
@@ -62,7 +62,7 @@
         <ion-item>
           <ion-label [color]="showErrorMessages && !newProfile.location ? 'danger': ''" floating>*Location</ion-label>
           <ion-input [class.invalid]="showErrorMessages && !newProfile.location" [(ngModel)]="newProfile.location"></ion-input>
-          <button item-right ion-button>Select Location</button>
+          <button item-right ion-button (click)="openLocationModal()">Select Location</button>
           <button ion-button item-right color="danger" *ngIf="showErrorMessages && !newProfile.location">
             Location is required
           </button>

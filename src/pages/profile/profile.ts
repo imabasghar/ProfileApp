@@ -1,5 +1,6 @@
+import { LocationPickerPage } from '../location-picker/location-picker';
 import { Component } from "@angular/core";
-import { NavController } from "ionic-angular";
+import { NavController, ModalController } from "ionic-angular";
 import { PROFILE_STORAGE_KEY } from "../../app/shared/constants";
 import { Profile } from "../../app/shared/models/profile.model";
 
@@ -13,7 +14,7 @@ export class ProfilePage {
   inEditMode = false;
   storage = window.localStorage;
   showErrorMessages = false;
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
     this.loadProfile();
   }
 
@@ -59,5 +60,14 @@ export class ProfilePage {
   onErrorMessageClick($event) {
     // On Click of error message, focuses the respective input box
     console.log($event);
+  }
+
+  openLocationModal() {
+    let modal = this.modalCtrl.create(LocationPickerPage);
+    modal.present();
+    modal.onDidDismiss(data => {
+      console.log(data);
+      this.newProfile.location = data;
+    })
   }
 }
