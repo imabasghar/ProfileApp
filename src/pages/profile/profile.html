@@ -6,30 +6,30 @@
     <ion-card-content>
       <ion-grid *ngIf="!inEditMode">
         <ion-row>
-          <ion-col class="bold" col-12 col-lg-2>
-            Name
+          <ion-col class="bold" col-5 col-lg-1>
+            Name:
           </ion-col>
-          <ion-col col-12 col-lg-2>
+          <ion-col col-7 col-lg-2>
             {{currentProfile.name}}
           </ion-col>
-          <ion-col class="bold" col-12 col-lg-2 offset-lg-1>
-            Email Address
+          <ion-col class="bold" col-5 col-lg-1 offset-lg-1>
+            Email Address:
           </ion-col>
-          <ion-col col-12 col-lg-2>
+          <ion-col col-7 col-lg-2>
             {{currentProfile.email}}
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col class="bold" col-12 col-lg-2>
-            Date of Birth
+          <ion-col class="bold" col-5 col-lg-1>
+            Date of Birth:
           </ion-col>
-          <ion-col col-12 col-lg-2>
+          <ion-col col-7 col-lg-2>
             {{currentProfile.dob | date: 'MMM dd, yyyy'}}
           </ion-col>
-          <ion-col class="bold" col-12 col-lg-2 offset-lg-1>
-            Location
+          <ion-col class="bold" col-5 col-lg-1 offset-lg-1>
+            Location:
           </ion-col>
-          <ion-col col-12 col-lg-2>
+          <ion-col col-7 col-lg-2>
             {{currentProfile.location}}
           </ion-col>
 
@@ -37,7 +37,7 @@
         </ion-row>
       </ion-grid>
 
-      <ion-list *ngIf="inEditMode">
+      <ion-list *ngIf="inEditMode" inset>
         <ion-item>
           <ion-label [color]="showErrorMessages && !newProfile.name ? 'danger': ''" floating>*Name</ion-label>
           <ion-input [class.invalid]="showErrorMessages && !newProfile.name" [(ngModel)]="newProfile.name"></ion-input>
